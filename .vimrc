@@ -30,6 +30,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Raimondi/delimitMate'
+"Plugin 'Townk/vim-autoclose'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,28 +77,39 @@ set incsearch                           " 输入搜索内容时就显示搜索�
 set hlsearch                            " 搜索时高亮显示被找到的文本
 set noerrorbells                        " 关闭错误信息响铃
 set novisualbell                        " 关闭使用可视响铃代替呼叫
+
+set smartindent
+set tabstop=4
+set expandtab
 set shiftwidth=4                        " 设定 << 和 >> 命令移动时的宽度为 4
+
 set softtabstop=4                       " 使得按退格键时可以一次删掉 4 个空格
 set showmatch                           " 显示匹配的括号
 set scrolloff=3                         " 距离顶部和底部3行
+set linespace=2                         " 行间插入的像素行数目
+set autoread                            " 当文件在外部被修改，自动更新该文件
+set autochdir                           " 自动切换当前打开文件路径为当前文件所在的目录
 
 " 其他杂项 -------------------------------------
 "set mouse=a                             "启用鼠标"
 "set selection=exclusive                 " 选择模式，排除第一个字符
 set selectmode=key,mouse
 set matchtime=5
-set ignorecase                          "忽略大小写
+set ignorecase                          " 忽略大小写
 set incsearch
-set hlsearch                            "高亮搜索项
-set noexpandtab                         "不允许扩展table
+set hlsearch                            " 高亮搜索项
+set noexpandtab                         " 不允许扩展table
 set whichwrap+=<,>,h,l
-set autoread
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936
 set fileencoding=utf-8
 set langmenu=zh_CN.UTF-8
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+"inoremap { {}<ESC>i
+"inoremap < <><ESC>i
 
 " Tomorrow系列
 "colorscheme Tomorrow                   " 白色背景
@@ -129,6 +142,14 @@ nmap 66 6gt
 nmap 77 7gt
 nmap 88 8gt
 nmap 99 9gt
+"map 11 :tabnext 1<CR>
+"map 22 :tabnext 2<CR>
+"map 33 :tabnext 3<CR>
+"map 44 :tabnext 4<CR>
+"map 55 :tabnext 5<CR>
+"map 66 :tabnext 6<CR>
+"map 77 :tabnext 7<CR>
+"map 88 :tabnext 8<CR>
 map  zz <Esc>
 omap zz <Esc>
 imap zz <Esc>
@@ -137,7 +158,9 @@ nmap <leader>l <C-w>l
 nmap <leader>h <C-w>h
 nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
+"imap{ {}<ESC>i<CR><ESC>O }
 
+au BufRead,BufNewFile * setfiletype txt " 高亮显示普通txt文件（需要txt.vim脚本）
 "记住最后一次编辑的位置
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
