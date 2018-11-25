@@ -16,7 +16,7 @@ then in the vim
 :BinaryInstall
 
 If you want play with go
-cd ~/.vim/bundle/YouCompleteMe/ && ./install.py --clang-compeleter --go-completer
+cd ~/.vim/bundle/YouCompleteMe/ && ./install.py --clang-completer --go-completer
 
 ##Congratulations
 
